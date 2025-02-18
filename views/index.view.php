@@ -5,7 +5,7 @@ $page = "home.php";
 <?php include './includes/head.php'; ?>
 
     <!-- Header -->
-    <?php include './includes/header.php'; ?>
+    <?php include './includes/nav.php'; ?>
     <!-- Cart -->
     <?php include './includes/cart.php'; ?>
     <!-- Slider -->

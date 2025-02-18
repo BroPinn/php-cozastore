@@ -7,9 +7,12 @@ function dd($value)
     die(); 
 } 
 
-function urlIs($value) { 
-    $currentUrl = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
-    $value = trim($value, '/');
-    var_dump($currentUrl, $value); // Debugging output
-    return $currentUrl === $value; 
+function urlIs($path) {
+    // Get the current page from GET parameter
+    $currentPage = $_GET['page'] ?? 'index';
+    
+    // Remove .php extension and compare
+    $path = str_replace('.php', '', $path);
+    
+    return $currentPage === $path;
 }
