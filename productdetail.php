@@ -1,3 +1,4 @@
 <?php
-include("./views/productdetail.php");
+$heading="Product Detail";
+include("./views/productdetail.view.php");
 ?>

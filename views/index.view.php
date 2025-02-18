@@ -1,11 +1,9 @@
 <?php
 $page = "home.php";
 ?>
-<!DOCTYPE html>
-<html lang="en">
+
 <?php include './includes/head.php'; ?>
 
-<body class="animsition">
     <!-- Header -->
     <?php include './includes/header.php'; ?>
     <!-- Cart -->
@@ -24,7 +22,3 @@ $page = "home.php";
     <?php include './includes/modal.php'; ?>
 
     <?php include './includes/foot.php'; ?>
-
-</body>
-
-</html>

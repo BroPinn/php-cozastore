@@ -39,13 +39,13 @@
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li>
-								<a href="index.php">Home</a>
+							<li class="<?=urlIs('index.php') ? 'active-menu' : '' ?>">
+								<a href="index.php" >Home</a>
 								
 							</li>
 
-							<li>
-								<a href="shop.php">Shop</a>
+							<li class="<?=urlIs('shop.php') ? 'active-menu' : '' ?>">
+								<a href="shop.php" >Shop</a>
 							</li>
 
 							<li class="label1" data-label1="hot">

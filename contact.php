@@ -1,3 +1,4 @@
 <?php
-include("./views/contact.php");
+$heading="Contact";
+include("./views/contact.view.php");
 ?>
