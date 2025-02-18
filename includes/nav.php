@@ -1,4 +1,4 @@
-<header>
+<header class="header-v4">
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
 			<!-- Topbar -->
@@ -28,7 +28,7 @@
 				</div>
 			</div>
 
-			<div class="wrap-menu-desktop">
+			<div class="wrap-menu-desktop how-shadow1">
 				<nav class="limiter-menu-desktop container">
 					
 					<!-- Logo desktop -->		
@@ -39,28 +39,29 @@
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li >
-								<a href="./index.php">Home</a>
+							<li>
+								<a href="index.php">Home</a>
+								
 							</li>
 
 							<li>
-								<a href="./shop.php">Shop</a>
+								<a href="shop.php">Shop</a>
 							</li>
 
 							<li class="label1" data-label1="hot">
-								<a href="./checkout.php">Features</a>
+								<a href="checkout.php">Features</a>
 							</li>
 
 							<li>
-								<a href="./blog.php">Blog</a>
+								<a href="blog.php">Blog</a>
 							</li>
 
 							<li>
-								<a href="./about.php">About</a>
+								<a href="about.php">About</a>
 							</li>
 
 							<li>
-								<a href="./contact.php">Contact</a>
+								<a href="contact.php">Contact</a>
 							</li>
 						</ul>
 					</div>	
@@ -75,7 +76,7 @@
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 
-						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
+						<a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
 							<i class="zmdi zmdi-favorite-outline"></i>
 						</a>
 					</div>
@@ -87,7 +88,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="index.html"><img src="./assets/images/icons/logo-01.png" alt="IMG-LOGO"></a>
+				<a href="index.php"><img src="./assets/images/icons/logo-01.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -146,28 +147,29 @@
 
 			<ul class="main-menu-m">
 				<li>
-					<a href="./index.php">Home</a>
+					<a href="index.php">Home</a>
+					
 					
 				</li>
 
 				<li>
-					<a href="./shop.php">Shop</a>
+					<a href="shop.php">Shop</a>
 				</li>
 
 				<li>
-					<a href="./shoping-cart.php" class="label1 rs1" data-label1="hot">Features</a>
+					<a href="shoping-cart.php" class="label1 rs1" data-label1="hot">Features</a>
 				</li>
 
 				<li>
-					<a href="./blog.php">Blog</a>
+					<a href="blog.php">Blog</a>
 				</li>
 
 				<li>
-					<a href="./about.php">About</a>
+					<a href="about.php">About</a>
 				</li>
 
 				<li>
-					<a href="./contact.php">Contact</a>
+					<a href="contact.php">Contact</a>
 				</li>
 			</ul>
 		</div>

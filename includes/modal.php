@@ -15,7 +15,7 @@
 								<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
 								<div class="slick3 gallery-lb">
-									<div class="item-slick3" data-thumb="images/product-detail-01.jpg">
+									<div class="item-slick3" data-thumb="./assets/images/product-detail-01.jpg">
 										<div class="wrap-pic-w pos-relative">
 											<img src="./assets/images/product-detail-01.jpg" alt="IMG-PRODUCT">
 
@@ -25,7 +25,7 @@
 										</div>
 									</div>
 
-									<div class="item-slick3" data-thumb="images/product-detail-02.jpg">
+									<div class="item-slick3" data-thumb="./assets/images/product-detail-02.jpg">
 										<div class="wrap-pic-w pos-relative">
 											<img src="./assets/images/product-detail-02.jpg" alt="IMG-PRODUCT">
 
@@ -35,7 +35,7 @@
 										</div>
 									</div>
 
-									<div class="item-slick3" data-thumb="images/product-detail-03.jpg">
+									<div class="item-slick3" data-thumb="./assets/images/product-detail-03.jpg">
 										<div class="wrap-pic-w pos-relative">
 											<img src="./assets/images/product-detail-03.jpg" alt="IMG-PRODUCT">
 

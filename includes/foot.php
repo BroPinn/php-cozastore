@@ -1,5 +1,21 @@
+<script src="./assets/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-<script src="./assets/vendor/daterangepicker/moment.min.js"></script>
+	<script src="./assets/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="./assets/vendor/bootstrap/js/popper.js"></script>
+	<script src="./assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="./assets/vendor/select2/select2.min.js"></script>
+	<script>
+		$(".js-select2").each(function(){
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			});
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="./assets/vendor/daterangepicker/moment.min.js"></script>
 	<script src="./assets/vendor/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
 	<script src="./assets/vendor/slick/slick.min.js"></script>
@@ -10,7 +26,7 @@
         $('.parallax100').parallax100();
 	</script>
 <!--===============================================================================================-->
-	<script src="./assets/vendor/MagnificPopup/jquery.magnific-popup.js"></script>
+	<script src="./assets/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
 	<script>
 		$('.gallery-lb').each(function() { // the containers for all your galleries
 			$(this).magnificPopup({
@@ -82,19 +98,3 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="./assets/js/main.js"></script>
-    <script src="./assets/vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="./assets/vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="./assets/vendor/bootstrap/js/popper.js"></script>
-	<script src="./assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="./assets/vendor/select2/select2.min.js"></script>
-	<script>
-		$(".js-select2").each(function(){
-			$(this).select2({
-				minimumResultsForSearch: 20,
-				dropdownParent: $(this).next('.dropDownSelect2')
-			});
-		})
-	</script>
