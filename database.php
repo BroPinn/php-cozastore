@@ -2,23 +2,23 @@
 // c:\xampp\htdocs\m3\cozastore-master\database.php
 
 function connectToDatabase() {
+    $host = 'localhost';
+    $dbname = 'onestore_db';
+    $username = 'root';
+    $password = '';
+
     try {
-        $dsn = 'mysql:host=localhost;dbname=onestore_db;charset=utf8';
-        $pdo = new PDO($dsn, 'root', '');
-        
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-        
+        $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8";
+        $pdo = new PDO($dsn, $username, $password, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false // Improves security for prepared statements
+        ]);
+
         return $pdo;
-    } catch(PDOException $e) {
-        // Log error or handle gracefully
+    } catch (PDOException $e) {
         error_log("Database Connection Error: " . $e->getMessage());
-        throw $e;
+        return null; // Return null instead of throwing an exception
     }
 }
 
-function getAllAdmins($pdo) {
-    $statement = $pdo->prepare('SELECT * FROM tbl_admin');
-    $statement->execute();
-    return $statement->fetchAll();
-}
