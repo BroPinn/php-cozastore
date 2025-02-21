@@ -33,6 +33,7 @@
 <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="./assets/css/util.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/main.css">
+    <script src="./assets/js/custom.js" defer></script>
 <!--===============================================================================================-->
 </head>
 

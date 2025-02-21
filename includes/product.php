@@ -1,11 +1,13 @@
 <?php
 require_once 'database.php';
 require_once './models/CategoryModel.php';
+require_once './models/ProuductModel.php';
 $categories = getCategories();
+$products = getProducts(); // Fetch products
 
 // Debug: Log categories if empty
 if (empty($categories)) {
-    error_log("No categories found in database");
+	error_log("No categories found in database");
 }
 ?>
 <section class="bg0 p-t-23 p-b-140">
@@ -23,18 +25,18 @@ if (empty($categories)) {
 				</button>
 
 				<?php if (!empty($categories)): ?>
-                <?php foreach ($categories as $category): ?>
-                    <?php
-                    // Convert category name to a safe class name
-                    $categorySlug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $category['name'])));
-                    ?>
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".<?php echo $categorySlug; ?>">
-                        <?php echo htmlspecialchars($category['name']); ?>
-                    </button>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p>No categories available.</p>
-            <?php endif; ?>
+					<?php foreach ($categories as $category): ?>
+						<?php
+						// Convert category name to a safe class name
+						$categorySlug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $category['name'])));
+						?>
+						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".<?php echo $categorySlug; ?>">
+							<?php echo htmlspecialchars($category['name']); ?>
+						</button>
+					<?php endforeach; ?>
+				<?php else: ?>
+					<p>No categories available.</p>
+				<?php endif; ?>
 			</div>
 
 			<div class="flex-w flex-c-m m-tb-10">
@@ -252,134 +254,41 @@ if (empty($categories)) {
 		</div>
 
 		<div class="row isotope-grid">
-			<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-				<!-- Block2 -->
-				<div class="block2">
-					<div class="block2-pic hov-img0">
-						<img src="./assets/images/product-01.jpg" alt="IMG-PRODUCT">
+			<?php if (!empty($products)): ?>
+				<?php foreach ($products as $product): ?>
+					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item">
+						<div class="block2">
+							<div class="block2-pic hov-img0">
+								<img src="<?= htmlspecialchars($product['image'] ?? './assets/images/placeholder.jpg') ?>"
+									alt="<?= htmlspecialchars($product['name']) ?>"
+									class="img-fluid">
 
-						<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-							Quick View
-						</a>
-					</div>
+								<button class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1 add-to-cart"
+									data-product-name="<?= htmlspecialchars($product['name']) ?>"
+									data-product-price="<?= $product['price'] ?>"
+									data-product-image="<?= htmlspecialchars($product['image']) ?>">
+									Add To Cart
+								</button>
+							</div>
+							<div class="block2-txt flex-w flex-t p-t-14">
+								<div class="block2-txt-child1 flex-col-l ">
+									<p class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+										<?= htmlspecialchars($product['name']) ?>
+									</p>
 
-					<div class="block2-txt flex-w flex-t p-t-14">
-						<div class="block2-txt-child1 flex-col-l ">
-							<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-								Esprit Ruffle Shirt
-							</a>
-
-							<span class="stext-105 cl3">
-								$16.64
-							</span>
-						</div>
-
-						<div class="block2-txt-child2 flex-r p-t-3">
-							<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-								<img class="icon-heart1 dis-block trans-04" src="./assets/images/icons/icon-heart-01.png" alt="ICON">
-								<img class="icon-heart2 dis-block trans-04 ab-t-l" src="./assets/images/icons/icon-heart-02.png" alt="ICON">
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-				<!-- Block2 -->
-				<div class="block2">
-					<div class="block2-pic hov-img0">
-						<img src="./assets/images/product-02.jpg" alt="IMG-PRODUCT">
-
-						<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-							Quick View
-						</a>
-					</div>
-
-					<div class="block2-txt flex-w flex-t p-t-14">
-						<div class="block2-txt-child1 flex-col-l ">
-							<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-								Herschel supply
-							</a>
-
-							<span class="stext-105 cl3">
-								$35.31
-							</span>
-						</div>
-
-						<div class="block2-txt-child2 flex-r p-t-3">
-							<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-								<img class="icon-heart1 dis-block trans-04" src="./assets/images/icons/icon-heart-01.png" alt="ICON">
-								<img class="icon-heart2 dis-block trans-04 ab-t-l" src="./assets/images/icons/icon-heart-02.png" alt="ICON">
-							</a>
+									<span class="stext-105 cl3 price">
+										$<?= number_format($product['price'], 2) ?>
+									</span>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-
-			<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-				<!-- Block2 -->
-				<div class="block2">
-					<div class="block2-pic hov-img0">
-						<img src="./assets/images/product-03.jpg" alt="IMG-PRODUCT">
-
-						<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-							Quick View
-						</a>
-					</div>
-
-					<div class="block2-txt flex-w flex-t p-t-14">
-						<div class="block2-txt-child1 flex-col-l ">
-							<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-								Only Check Trouser
-							</a>
-
-							<span class="stext-105 cl3">
-								$25.50
-							</span>
-						</div>
-
-						<div class="block2-txt-child2 flex-r p-t-3">
-							<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-								<img class="icon-heart1 dis-block trans-04" src="./assets/images/icons/icon-heart-01.png" alt="ICON">
-								<img class="icon-heart2 dis-block trans-04 ab-t-l" src="./assets/images/icons/icon-heart-02.png" alt="ICON">
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-				<!-- Block2 -->
-				<div class="block2">
-					<div class="block2-pic hov-img0">
-						<img src="./assets/images/product-04.jpg" alt="IMG-PRODUCT">
-
-						<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-							Quick View
-						</a>
-					</div>
-
-					<div class="block2-txt flex-w flex-t p-t-14">
-						<div class="block2-txt-child1 flex-col-l ">
-							<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-								Classic Trench Coat
-							</a>
-
-							<span class="stext-105 cl3">
-								$75.00
-							</span>
-						</div>
-
-						<div class="block2-txt-child2 flex-r p-t-3">
-							<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-								<img class="icon-heart1 dis-block trans-04" src="./assets/images/icons/icon-heart-01.png" alt="ICON">
-								<img class="icon-heart2 dis-block trans-04 ab-t-l" src="./assets/images/icons/icon-heart-02.png" alt="ICON">
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
+				<?php endforeach; ?>
+			<?php else: ?>
+				<p>No products available.</p>
+			<?php endif; ?>
 		</div>
+
 		<!-- Load more -->
 		<div class="flex-c-m flex-w w-full p-t-45">
 			<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">

@@ -6,5 +6,5 @@
     <?php include './includes/cart.php'; ?>
     <?php include './includes/btntop.php'; ?>
     <?php include './includes/footer.php'; ?>
-    <?php include './includes/modal.php'; ?>
+    <?php //include './includes/modal.php'; ?>
     <?php include './includes/foot.php'; ?>

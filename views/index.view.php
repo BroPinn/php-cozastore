@@ -19,6 +19,6 @@ $page = "home.php";
     <!-- Back to top -->
     <?php include './includes/btntop.php'; ?>
     <!-- Modal1 -->
-    <?php include './includes/modal.php'; ?>
+    <?php //include './includes/modal.php'; ?>
 
     <?php include './includes/foot.php'; ?>
