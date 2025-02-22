@@ -15,12 +15,10 @@ window.initCart = (() => {
             }
         }
 
-        // Comprehensive localStorage update
         const cartItemsArray = Array.from(cartItems.entries());
         localStorage.setItem('cartItems', JSON.stringify(cartItemsArray));
         localStorage.setItem('cartTotal', totalItems.toString());
 
-        // Dispatch cart updated event
         window.dispatchEvent(new Event('cartUpdated'));
     };
 
@@ -33,21 +31,17 @@ window.initCart = (() => {
             productId 
         } = productData;
 
-        //console.log('Adding to cart:', productData);
+        console.log('Adding to cart:', productData);
 
-        // Ensure productId exists and is unique
         const uniqueProductId = productId || `product_${Math.random().toString(36).substr(2, 9)}`;
 
-        // Find existing item with same productId
         const existingItemKey = Array.from(cartItems.keys()).find(key => key === uniqueProductId);
 
         if (existingItemKey) {
-            // Update existing item
             const existingItem = cartItems.get(existingItemKey);
             existingItem.quantity += 1;
             cartItems.set(existingItemKey, existingItem);
         } else {
-            // Add new item with complete details
             const newItem = {
                 title,
                 quantity: 1,
@@ -57,7 +51,7 @@ window.initCart = (() => {
                 productId: uniqueProductId
             };
 
-            //console.log('New cart item:', newItem);
+            console.log('New cart item:', newItem);
             cartItems.set(uniqueProductId, newItem);
         }
 
@@ -70,7 +64,6 @@ window.initCart = (() => {
             if (savedCart) {
                 const parsedCart = JSON.parse(savedCart);
                 parsedCart.forEach(([key, value]) => {
-                    // Ensure all necessary properties exist
                     const completeItem = {
                         title: value.title || 'Unnamed Product',
                         quantity: value.quantity || 1,
@@ -102,10 +95,8 @@ window.initCart = (() => {
     document.addEventListener('DOMContentLoaded', () => {
         loadCart();
 
-        // Enhanced selector to catch more potential add to cart buttons
         document.querySelectorAll('.add-to-cart, [data-add-to-cart]').forEach(button => {
             button.addEventListener('click', function() {
-                // Capture all possible attributes
                 const productData = {
                     productId: this.getAttribute('data-product-id') || 
                                this.getAttribute('data-id') || 
@@ -128,7 +119,7 @@ window.initCart = (() => {
                                  ''
                 };
 
-                //console.log('Adding to cart:', productData);
+                console.log('Adding to cart:', productData);
 
                 addToCart(productData);
             });
