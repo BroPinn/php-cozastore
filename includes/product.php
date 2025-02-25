@@ -1,7 +1,6 @@
 <?php
-require_once 'database.php';
 require_once './models/CategoryModel.php';
-require_once './models/ProuductModel.php';
+require_once './models/ProductModel.php';
 
 $categories = getCategories();
 $products = getProducts(); // Fetch products
