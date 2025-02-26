@@ -28,10 +28,10 @@ if (empty($categories)) {
                     <?php foreach ($categories as $category): ?>
                         <?php
                         // Convert category name to a safe class name
-                        $categorySlug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $category['name'])));
+                        $categorySlug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $category['catName'])));
                         ?>
                         <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".<?php echo $categorySlug; ?>">
-                            <?php echo htmlspecialchars($category['name']); ?>
+                            <?php echo htmlspecialchars($category['catName']); ?>
                         </button>
                     <?php endforeach; ?>
                 <?php else: ?>

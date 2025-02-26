@@ -3,7 +3,7 @@ require_once __DIR__ . '/../database.php';
 
 class ProductModel {  
     public $productID;
-    public $categoryID;
+    public $catName;
     public $productName;
     public $price;
     public $description;
@@ -46,7 +46,7 @@ function getProductById($productID) {
     }
 }
 
-function createProduct($categoryID, $productName, $price, $description, $image_path) {
+function createProduct($catName, $productName, $price, $description, $image_path) {
     try {
         $pdo = connectToDatabase();
         if (!$pdo) {
@@ -55,7 +55,7 @@ function createProduct($categoryID, $productName, $price, $description, $image_p
 
         $stmt = $pdo->prepare("CALL CreateProduct(?, ?, ?, ?, ?)");
         return $stmt->execute([
-            $categoryID,
+            $catName,
             $productName,
             $price,
             $description,
@@ -67,7 +67,7 @@ function createProduct($categoryID, $productName, $price, $description, $image_p
     }
 }
 
-function updateProduct($productID, $categoryID, $productName, $price, $description, $image_path) {
+function updateProduct($productID, $catName, $productName, $price, $description, $image_path) {
     try {
         $pdo = connectToDatabase();
         if (!$pdo) {
@@ -77,7 +77,7 @@ function updateProduct($productID, $categoryID, $productName, $price, $descripti
         $stmt = $pdo->prepare("CALL UpdateProduct(?, ?, ?, ?, ?, ?)");
         return $stmt->execute([
             $productID,
-            $categoryID,
+            $catName,
             $productName,
             $price,
             $description,

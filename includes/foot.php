@@ -96,6 +96,74 @@
 			})
 		});
 	</script>
+	<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const headerCartItems = document.getElementById('headerCartItems');
+    const headerCartTotal = document.getElementById('headerCartTotal');
+    const emptyCartMessage = document.getElementById('emptyCartMessage');
+
+    function updateHeaderCart() {
+        headerCartItems.innerHTML = '';
+        emptyCartMessage.style.display = 'block';
+        headerCartTotal.textContent = '$0.00';
+
+        try {
+            const savedCart = localStorage.getItem('cartItems');
+            if (savedCart) {
+                const cartItems = JSON.parse(savedCart);
+                if (cartItems.length === 0) {
+                    return;
+                }
+                emptyCartMessage.style.display = 'none';
+                let total = 0;
+                cartItems.forEach(([key, item]) => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    const cartItemElement = document.createElement('li');
+                    cartItemElement.className = 'header-cart-item flex-w flex-t m-b-12';
+                    cartItemElement.innerHTML = `
+                        <div class="header-cart-item-img">
+                            <img src="${item.image || './assets/images/placeholder.jpg'}" alt="${item.title}">
+                        </div>
+                        <div class="header-cart-item-txt p-t-8">
+                            <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+                                ${item.title}
+                            </a>
+                            <span class="header-cart-item-info">
+                                ${item.quantity} x $${item.price.toFixed(2)}
+                            </span>
+                            <button class="btn btn-sm btn-danger remove-cart-item" data-product-id="${key}">
+                                Remove
+                            </button>
+                        </div>
+                    `;
+
+                    headerCartItems.appendChild(cartItemElement);
+                });
+                headerCartTotal.textContent = `$${total.toFixed(2)}`;
+            }
+        } catch (error) {
+            localStorage.removeItem('cartItems');
+        }
+    }
+    headerCartItems.addEventListener('click', (event) => {
+        if (event.target.classList.contains('remove-cart-item')) {
+            const productId = event.target.getAttribute('data-product-id');
+            const savedCart = JSON.parse(localStorage.getItem('cartItems') || '[]');
+            const updatedCart = savedCart.filter(([key]) => key !== productId);
+            localStorage.setItem('cartItems', JSON.stringify(updatedCart));
+            if (window.initCart && window.initCart.removeFromCart) {
+                window.initCart.removeFromCart(productId);
+            }
+            updateHeaderCart();
+            window.dispatchEvent(new Event('cartUpdated'));
+        }
+    });
+    window.addEventListener('storage', updateHeaderCart);
+    window.addEventListener('cartUpdated', updateHeaderCart);
+    updateHeaderCart();
+});
+</script>
 <!--===============================================================================================-->
 	<script src="./assets/js/main.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">

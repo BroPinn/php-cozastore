@@ -1,12 +1,13 @@
 <?php
 require_once __DIR__ . '/../../models/ProductModel.php';
+require_once __DIR__ . '/../../models/CategoryModel.php';
 $products = getProducts();
-$heading = "Product"; // Define heading variable
+$categories = getCategories();
 ?>
 <div class="container">
     <div class="page-inner">
         <div class="page-header">
-            <h3 class="fw-bold mb-3">Add <?= $heading ?></h3>
+            <h3 class="fw-bold mb-3">Add <?= htmlspecialchars($heading) ?></h3>
             <ul class="breadcrumbs mb-3">
                 <li class="nav-home">
                     <a href="index.php?page=index">
@@ -17,7 +18,7 @@ $heading = "Product"; // Define heading variable
                     <i class="icon-arrow-right"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="index.php?page=product"><?= $heading ?></a>
+                    <a href="index.php?page=product"><?= htmlspecialchars($heading) ?></a>
                 </li>
             </ul>
         </div>
@@ -26,96 +27,75 @@ $heading = "Product"; // Define heading variable
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title">Add <?= $heading ?></h4>
-                            <button
-                                class="btn btn-primary btn-round ms-auto"
-                                data-bs-toggle="modal"
-                                data-bs-target="#addRowModal">
-                                <i class="fa fa-plus"></i>
-                                Add <?= $heading ?>
+                            <h4 class="card-title">Add <?= htmlspecialchars($heading) ?></h4>
+                            <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#addRowModal">
+                                <i class="fa fa-plus"></i> Add <?= htmlspecialchars($heading) ?>
                             </button>
                         </div>
                     </div>
                     <div class="card-body">
-                        <!-- Modal -->
-                        <div
-                            class="modal fade"
-                            id="addRowModal"
-                            tabindex="-1"
-                            role="dialog"
-                            aria-hidden="true">
+                        <!-- Add Product Modal -->
+                        <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header border-0">
-                                        <h5 class="modal-title">
-                                            <span class="fw-mediumbold"> New</span>
-                                            <span class="fw-light"> Row </span>
-                                        </h5>
-                                        <button
-                                            type="button"
-                                            class="close"
-                                            data-dismiss="modal"
-                                            aria-label="Close">
+                                        <h5 class="modal-title">New <span class="fw-light">Product</span></h5>
+                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <p class="small">
-                                            Create a new row using this form, make sure you
-                                            fill them all
-                                        </p>
-                                        <form>
+                                        <p class="small">Create a new product using this form.</p>
+                                        <form id="addProductForm" method="POST" action="./controllers/add_product.php" enctype="multipart/form-data">
                                             <div class="row">
                                                 <div class="col-sm-12">
-                                                    <div class="form-group form-group-default">
-                                                        <label>Name</label>
-                                                        <input
-                                                            id="addName"
-                                                            type="text"
-                                                            class="form-control"
-                                                            placeholder="fill name" />
+                                                    <div class="form-group">
+                                                        <label>Product Name</label>
+                                                        <input name="productName" type="text" class="form-control" placeholder="Enter product name" required>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 pe-0">
-                                                    <div class="form-group form-group-default">
-                                                        <label>Position</label>
-                                                        <input
-                                                            id="addPosition"
-                                                            type="text"
-                                                            class="form-control"
-                                                            placeholder="fill position" />
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label>Category</label>
+                                                        <select name="catID" class="form-control" required>
+                                                            <option value="">Select Category</option>
+                                                            <?php foreach ($categories as $category): ?>
+                                                                <option value="<?= htmlspecialchars($category['categoryID']) ?>">
+                                                                    <?= htmlspecialchars($category['catName']) ?>
+                                                                </option>
+                                                            <?php endforeach; ?>
+                                                        </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-group-default">
-                                                        <label>Office</label>
-                                                        <input
-                                                            id="addOffice"
-                                                            type="text"
-                                                            class="form-control"
-                                                            placeholder="fill office" />
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label>Price ($)</label>
+                                                        <input name="price" type="number" step="0.01" class="form-control" placeholder="Enter price" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label>Product Image</label>
+                                                        <input name="image" type="file" class="form-control" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label>Description</label>
+                                                        <textarea name="description" class="form-control" placeholder="Enter product description" required></textarea>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="modal-footer border-0">
+                                                <button type="submit" class="btn btn-primary">Add</button>
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                            </div>
                                         </form>
-                                    </div>
-                                    <div class="modal-footer border-0">
-                                        <button
-                                            type="button"
-                                            id="addRowButton"
-                                            class="btn btn-primary">
-                                            Add
-                                        </button>
-                                        <button
-                                            type="button"
-                                            class="btn btn-danger"
-                                            data-dismiss="modal">
-                                            Close
-                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- Product Table -->
                         <div class="table-responsive">
                             <table id="add-row" class="display table table-striped table-hover">
                                 <thead>
@@ -132,7 +112,7 @@ $heading = "Product"; // Define heading variable
                                     <?php foreach ($products as $product): ?>
                                         <tr>
                                             <td><?= htmlspecialchars($product['productName']) ?></td>
-                                            <td><?= htmlspecialchars($product['categoryID']) ?></td>
+                                            <td><?= htmlspecialchars($product['catName']) ?></td>
                                             <td>
                                                 <img src="<?= htmlspecialchars('/m3/cozastore-master/' . $product['image_path']) ?>"
                                                     alt="<?= htmlspecialchars($product['productName']) ?>"
@@ -143,17 +123,14 @@ $heading = "Product"; // Define heading variable
                                             <td>
                                                 <div class="form-button-action">
                                                     <button type="button"
-                                                        data-bs-toggle="tooltip"
-                                                        title="Edit Product"
                                                         class="btn btn-link btn-primary btn-lg"
-                                                        data-product-id="<?= $product['productID'] ?>"
+                                                        title="Edit Product"
                                                         onclick="editProduct(<?= $product['productID'] ?>)">
                                                         <i class="fa fa-edit"></i>
                                                     </button>
                                                     <button type="button"
-                                                        data-bs-toggle="tooltip"
-                                                        title="Delete Product"
                                                         class="btn btn-link btn-danger"
+                                                        title="Delete Product"
                                                         onclick="deleteProduct(<?= $product['productID'] ?>)">
                                                         <i class="fa fa-times"></i>
                                                     </button>
