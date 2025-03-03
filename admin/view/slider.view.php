@@ -1,6 +1,4 @@
 <?php
-require_once __DIR__ . '/../../models/SliderModel.php';
-
 $sliderModel = new SliderModel();
 $sliders = $sliderModel->getSliders(); // Ensure this uses GetActiveSliders() procedure
 require './includes/head.php';

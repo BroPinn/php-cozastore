@@ -1,11 +1,11 @@
 <?php
-$heading="Slider";
+
 require_once __DIR__ . '/../../models/SliderModel.php';
 
 define('UPLOAD_DIR', '../uploads/images/slider/');
 define('ALLOWED_TYPES', ['image/jpeg', 'image/png', 'image/gif']);
 
-$heading = "Product";
+$heading="Slider";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sliderModel = new SliderModel();
     

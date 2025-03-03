@@ -30,7 +30,7 @@ class SliderModel  {
             return [];
         }
     }
-    public function createSlider($slider_title, $slider_status, $slider_image, $slider_link, $slider_subtitle) {
+    public function createSlider($slider_title, $slider_subtitle,$slider_image, $slider_link,$slider_status) {
         try {
             $pdo = connectToDatabase();
             if (!$pdo) {
@@ -40,13 +40,14 @@ class SliderModel  {
             $stmt = $pdo->prepare("CALL CreateSlider(?, ?, ?, ?, ?)");
             return $stmt->execute([
                 $slider_title,
-                $slider_status,
+                $slider_subtitle,
                 $slider_image,
                 $slider_link,
-                $slider_subtitle
+                $slider_status
+                
             ]);
         } catch (PDOException $e) {
-            error_log("Product Creation Error: " . $e->getMessage());
+            error_log("Slider Creation Error: " . $e->getMessage());
             return false;
         }
     }
