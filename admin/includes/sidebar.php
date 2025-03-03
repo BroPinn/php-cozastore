@@ -72,7 +72,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="#maps">
-                                <i class="fas fa-shield"></i>
+                                <i class="fa fa-tag"></i>
                                 <p>Brands</p>
                             </a>
                         </li>
@@ -91,7 +91,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="#">
-                                <i class="fas fa-settings"></i>
+                                <i class="fa fa-wrench"></i>
                                 <p>Settings</p>
                             </a>
                         </li>          
