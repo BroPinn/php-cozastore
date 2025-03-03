@@ -65,43 +65,36 @@
                         <li class="nav-item">
                             <a href="#tables">
                                 <i class="fas fa-table"></i>
-                                <p>Tables</p>
+                                <p>Category</p>
 
                             </a>
 
                         </li>
                         <li class="nav-item">
                             <a href="#maps">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <p>Maps</p>
+                                <i class="fas fa-shield"></i>
+                                <p>Brands</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#charts">
-                                <i class="far fa-chart-bar"></i>
-                                <p>Charts</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#">
-                                <i class="fas fa-desktop"></i>
-                                <p>Widgets</p>
-                                <span class="badge badge-success">4</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#">
                                 <i class="fas fa-file"></i>
-                                <p>Documentation</p>
-                                <span class="badge badge-secondary">1</span>
+                                <p>Page</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#submenu">
-                                <i class="fas fa-bars"></i>
-                                <p>Menu Levels</p>
+                            <a href="#">
+                                <i class="fas fa-user"></i>
+                                <p>User</p>
+                               
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="#">
+                                <i class="fas fa-settings"></i>
+                                <p>Settings</p>
+                            </a>
+                        </li>          
                     </ul>
                 </div>
             </div>
