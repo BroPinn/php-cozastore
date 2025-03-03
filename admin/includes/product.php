@@ -46,7 +46,7 @@ $categories = getCategories();
                                     </div>
                                     <div class="modal-body">
                                         <p class="small">Create a new product using this form.</p>
-                                        <form id="addProductForm" method="POST" action="./controllers/add_product.php" enctype="multipart/form-data">
+                                        <form id="addProductForm" method="POST" action="index.php?page=product" enctype="multipart/form-data">
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
@@ -114,7 +114,7 @@ $categories = getCategories();
                                             <td><?= htmlspecialchars($product['productName']) ?></td>
                                             <td><?= htmlspecialchars($product['catName']) ?></td>
                                             <td>
-                                                <img src="<?= htmlspecialchars('/m3/cozastore-master/' . $product['image_path']) ?>"
+                                                <img src="<?= htmlspecialchars("../" . $product['image_path']) ?>"
                                                     alt="<?= htmlspecialchars($product['productName']) ?>"
                                                     style="max-width: 50px; height: auto;">
                                             </td>
