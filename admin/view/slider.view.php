@@ -4,6 +4,11 @@ $sliders = $sliderModel->getSliders(); // Ensure this uses GetActiveSliders() pr
 require './includes/head.php';
 require './includes/sidebar.php';
 require './includes/navbar.php';
+
+$editSlider = null;
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['action'] === 'edit' && isset($_GET['id'])) {
+    $editSlider = $sliderModel->getSliderById($_GET['id']);
+}
 ?>
 <div class="container">
     <div class="page-inner">
@@ -69,18 +74,16 @@ require './includes/navbar.php';
                                             </td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <button type="button"
-                                                        class="btn btn-link btn-primary btn-lg"
-                                                        title="Edit Slider"
-                                                        onclick="editSlider(<?= $slider['slider_id'] ?>)">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn btn-link btn-danger"
-                                                        title="Delete Slider"
-                                                        onclick="deleteSlider(<?= $slider['slider_id'] ?>)">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
+                                                    <form method="POST" action="index.php?page=slider&action=edit&id=<?= $slider['slider_id'] ?>" style="display:inline;">
+                                                        <button type="submit" class="btn btn-link btn-primary btn-lg" title="Edit Slider">
+                                                            <i class="fa fa-edit"></i>
+                                                        </button>
+                                                    </form>
+                                                    <form method="POST" action="index.php?page=slider&action=delete&id=<?= $slider['slider_id'] ?>" style="display:inline;">
+                                                        <button type="submit" class="btn btn-link btn-danger" title="Delete Slider">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>
@@ -152,6 +155,67 @@ require './includes/navbar.php';
         </div>
     </div>
 </div>
+
+<!-- Edit Slider Modal -->
+<?php if ($editSlider): ?>
+<div class="modal fade show" id="editSliderModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: block;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">Edit <span class="fw-light">Slider</span></h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" onclick="window.location.href='index.php?page=slider'">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="small">Edit the slider using this form.</p>
+                <form id="editSliderForm" method="POST" action="index.php?page=slider&action=update&id=<?= $editSlider['slider_id'] ?>" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input name="slider_title" type="text" class="form-control" value="<?= htmlspecialchars($editSlider['slider_title']) ?>" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Subtitle</label>
+                                <input name="slider_subtitle" type="text" class="form-control" value="<?= htmlspecialchars($editSlider['slider_subtitle']) ?>">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Image</label>
+                                <input name="slider_image" type="file" class="form-control">
+                                <img src="<?= htmlspecialchars("../" . $editSlider['slider_image']) ?>" alt="<?= htmlspecialchars($editSlider['slider_title']) ?>" style="max-width: 100px; height: auto;">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Link</label>
+                                <input name="slider_link" type="text" class="form-control" value="<?= htmlspecialchars($editSlider['slider_link']) ?>">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select name="slider_status" class="form-control">
+                                    <option value="1" <?= $editSlider['slider_status'] ? 'selected' : '' ?>>Active</option>
+                                    <option value="0" <?= !$editSlider['slider_status'] ? 'selected' : '' ?>>Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="submit" class="btn btn-primary">Update Slider</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="window.location.href='index.php?page=slider'">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
 
 <?php
 require './includes/footer.php';
