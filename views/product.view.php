@@ -64,10 +64,10 @@ if (empty($categories)) {
             </div>
 
             <!-- Filter -->
-            <?php include 'filter.php'; ?>
+            <?php include './includes/filter.php'; ?>
         </div>
 
-        <?php include 'product-list.php'; ?>
+        <?php include './includes/product-list.php'; ?>
 
         <!-- Load more -->
         <div class="flex-c-m flex-w w-full p-t-45">
