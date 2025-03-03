@@ -49,7 +49,7 @@ class ProductModel {
         }
     }
 
-    public function createProduct($catName, $productName, $price, $description, $image_path) {
+    public function createProduct($catID, $productName, $price, $description, $image_path) {
         try {
             $pdo = connectToDatabase();
             if (!$pdo) {
@@ -58,7 +58,7 @@ class ProductModel {
 
             $stmt = $pdo->prepare("CALL CreateProduct(?, ?, ?, ?, ?)");
             return $stmt->execute([
-                $catName,
+                $catID,
                 $productName,
                 $price,
                 $description,

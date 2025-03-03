@@ -56,7 +56,7 @@ require './includes/navbar.php';
                                     <?php foreach ($products as $product): ?>
                                         <tr>
                                             <td><?= htmlspecialchars($product['productName']) ?></td>
-                                            <td><?= htmlspecialchars($product['catName']) ?></td>
+                                            <td><?= htmlspecialchars($product['categoryName'] ?? 'N/A') ?></td>
                                             <td>
                                                 <img src="<?= htmlspecialchars("../" . $product['image_path']) ?>"
                                                     alt="<?= htmlspecialchars($product['productName']) ?>"

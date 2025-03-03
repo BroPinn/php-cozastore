@@ -91,7 +91,7 @@
 
                         <div class="size-209">
                             <span class="mtext-110 cl2">
-                                $79.65
+                                $0
                             </span>
                         </div>
                     </div>
@@ -149,7 +149,7 @@
 
                         <div class="size-209 p-t-1">
                             <span class="mtext-110 cl2">
-                                $79.65
+                                $0
                             </span>
                         </div>
                     </div>
