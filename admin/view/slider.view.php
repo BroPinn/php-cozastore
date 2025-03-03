@@ -1,5 +1,8 @@
 <?php
+require_once __DIR__ . '/../../models/SliderModel.php';
 
+$sliderModel = new SliderModel();
+$sliders = $sliderModel->getSliders(); // Ensure this uses GetActiveSliders() procedure
 require './includes/head.php';
 require './includes/sidebar.php';
 require './includes/navbar.php';
@@ -7,7 +10,7 @@ require './includes/navbar.php';
 <div class="container">
     <div class="page-inner">
         <div class="page-header">
-            <h3 class="fw-bold mb-3">Add <?=$heading?></h3>
+            <h3 class="fw-bold mb-3">Manage Sliders</h3>
             <ul class="breadcrumbs mb-3">
                 <li class="nav-home">
                     <a href="index.php?page=index">
@@ -18,7 +21,7 @@ require './includes/navbar.php';
                     <i class="icon-arrow-right"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="index.php?page=slider"><?=$heading?></a>
+                    <a href="index.php?page=slider">Sliders</a>
                 </li>
             </ul>
         </div>
@@ -27,136 +30,63 @@ require './includes/navbar.php';
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title">Add <?=$heading?></h4>
+                            <h4 class="card-title">Slider List</h4>
                             <button
                                 class="btn btn-primary btn-round ms-auto"
                                 data-bs-toggle="modal"
-                                data-bs-target="#addRowModal">
+                                data-bs-target="#addSliderModal">
                                 <i class="fa fa-plus"></i>
-                                Add <?=$heading?>
+                                Add Slider
                             </button>
                         </div>
                     </div>
                     <div class="card-body">
-                        <!-- Modal -->
-                        <div
-                            class="modal fade"
-                            id="addRowModal"
-                            tabindex="-1"
-                            role="dialog"
-                            aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header border-0">
-                                        <h5 class="modal-title">
-                                            <span class="fw-mediumbold"> New</span>
-                                            <span class="fw-light"> Row </span>
-                                        </h5>
-                                        <button
-                                            type="button"
-                                            class="close"
-                                            data-dismiss="modal"
-                                            aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p class="small">
-                                            Create a new row using this form, make sure you
-                                            fill them all
-                                        </p>
-                                        <form>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <div class="form-group form-group-default">
-                                                        <label>Name</label>
-                                                        <input
-                                                            id="addName"
-                                                            type="text"
-                                                            class="form-control"
-                                                            placeholder="fill name" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 pe-0">
-                                                    <div class="form-group form-group-default">
-                                                        <label>Position</label>
-                                                        <input
-                                                            id="addPosition"
-                                                            type="text"
-                                                            class="form-control"
-                                                            placeholder="fill position" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-group-default">
-                                                        <label>Office</label>
-                                                        <input
-                                                            id="addOffice"
-                                                            type="text"
-                                                            class="form-control"
-                                                            placeholder="fill office" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer border-0">
-                                        <button
-                                            type="button"
-                                            id="addRowButton"
-                                            class="btn btn-primary">
-                                            Add
-                                        </button>
-                                        <button
-                                            type="button"
-                                            class="btn btn-danger"
-                                            data-dismiss="modal">
-                                            Close
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="table-responsive">
-                            <table
-                                id="add-row"
-                                class="display table table-striped table-hover">
+                            <table id="sliderTable" class="display table table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
+                                        <th>Title</th>
+                                        <th>Subtitle</th>
                                         <th>Image</th>
-                                        <th>Price</th>
-                                        <th>Description</th>
-                                        <th>Action</th>
+                                        <th>Link</th>
+                                        <th>Status</th>
+                                        <th style="width: 15%">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>Testing</td>
-                                        <td>
-                                            <div class="form-button-action">
-                                                <button
-                                                    type="button"
-                                                    data-bs-toggle="tooltip"
-                                                    title=""
-                                                    class="btn btn-link btn-primary btn-lg"
-                                                    data-original-title="Edit Task">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button
-                                                    type="button"
-                                                    data-bs-toggle="tooltip"
-                                                    title=""
-                                                    class="btn btn-link btn-danger"
-                                                    data-original-title="Remove">
-                                                    <i class="fa fa-times"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    <?php foreach ($sliders as $slider): ?>
+                                        <tr>
+                                            <td><?= htmlspecialchars($slider['slider_title'] ?? 'N/A') ?></td>
+                                            <td><?= htmlspecialchars($slider['slider_subtitle'] ?? 'N/A') ?></td>
+                                            <td>
+                                                <img src="<?= htmlspecialchars("../" . $slider['slider_image'] ?? '') ?>"
+                                                    alt="<?= htmlspecialchars($slider['slider_title'] ?? 'Slider') ?>"
+                                                    style="max-width: 100px; height: auto;">
+                                            </td>
+                                            <td><?= htmlspecialchars($slider['slider_link'] ?? 'N/A') ?></td>
+                                            <td>
+                                                <span class="badge <?= $slider['slider_status'] ? 'bg-success' : 'bg-danger' ?>">
+                                                    <?= $slider['slider_status'] ? 'Active' : 'Inactive' ?>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <div class="form-button-action">
+                                                    <button type="button"
+                                                        class="btn btn-link btn-primary btn-lg"
+                                                        title="Edit Slider"
+                                                        onclick="editSlider(<?= $slider['slider_id'] ?>)">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn btn-link btn-danger"
+                                                        title="Delete Slider"
+                                                        onclick="deleteSlider(<?= $slider['slider_id'] ?>)">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -166,6 +96,66 @@ require './includes/navbar.php';
         </div>
     </div>
 </div>
-<?php 
+
+<!-- Add Slider Modal -->
+<div class="modal fade" id="addSliderModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">New <span class="fw-light">Slider</span></h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="small">Create a new slider using this form.</p>
+                <form id="addSliderForm" method="POST" action="index.php?page=slider" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input name="slider_title" type="text" class="form-control" placeholder="Enter slider title" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Subtitle</label>
+                                <input name="slider_subtitle" type="text" class="form-control" placeholder="Enter slider subtitle">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Image</label>
+                                <input name="slider_image" type="file" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Link</label>
+                                <input name="slider_link" type="text" class="form-control" placeholder="Enter target link">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select name="slider_status" class="form-control">
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="submit" class="btn btn-primary">Add Slider</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php
 require './includes/footer.php';
 require './includes/foot.php';
+?>

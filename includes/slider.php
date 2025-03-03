@@ -1,17 +1,9 @@
 <?php
-require_once 'database.php';
+require_once './models/SliderModel.php';
 
-try {
-    $pdo = connectToDatabase();
-    $statement = $pdo->prepare('SELECT * FROM tbl_slider WHERE slider_status = 1 ORDER BY slider_id');
-    $statement->execute();
-    $sliders = $statement->fetchAll(PDO::FETCH_ASSOC);
-} catch(PDOException $e) {
-    $sliders = []; // Fallback to empty array
-    error_log("Slider fetch error: " . $e->getMessage());
-}
+$sliderModel = new SliderModel();
+$sliders = $sliderModel->getSliders(); 
 ?>
-
 <section class="section-slide">
     <div class="wrap-slick1">
         <div class="slick1">
