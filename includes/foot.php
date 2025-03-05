@@ -1,11 +1,12 @@
-<script src="./assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/client/vendor/jquery/jquery-3.2.1.min.js"></script>
+
 <!--===============================================================================================-->
-	<script src="./assets/vendor/animsition/js/animsition.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/client/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-	<script src="./assets/vendor/bootstrap/js/popper.js"></script>
-	<script src="./assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/client/vendor/bootstrap/js/popper.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/client/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-	<script src="./assets/vendor/select2/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/client/vendor/select2/select2.min.js"></script>
 	<script>
 		$(".js-select2").each(function(){
 			$(this).select2({
@@ -15,18 +16,18 @@
 		})
 	</script>
 <!--===============================================================================================-->
-	<script src="./assets/vendor/daterangepicker/moment.min.js"></script>
-	<script src="./assets/vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/client/vendor/moment/moment.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/client/vendor/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
 	<script src="./assets/vendor/slick/slick.min.js"></script>
 	<script src="./assets/js/slick-custom.js"></script>
 <!--===============================================================================================-->
-	<script src="./assets/vendor/parallax100/parallax100.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/client/vendor/parallax100/parallax100.js"></script>
 	<script>
         $('.parallax100').parallax100();
 	</script>
 <!--===============================================================================================-->
-	<script src="./assets/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/client/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
 	<script>
 		$('.gallery-lb').each(function() { // the containers for all your galleries
 			$(this).magnificPopup({
@@ -40,9 +41,10 @@
 		});
 	</script>
 <!--===============================================================================================-->
-	<script src="./assets/vendor/isotope/isotope.pkgd.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/client/vendor/isotope/isotope.pkgd.min.js"></script>
 <!--===============================================================================================-->
-	<script src="./assets/vendor/sweetalert/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/client/vendor/sweetalert/sweetalert.min.js"></script>
+
 	<script>
 		$('.js-addwish-b2').on('click', function(e){
 			e.preventDefault();
@@ -80,7 +82,7 @@
 	
 	</script>
 <!--===============================================================================================-->
-	<script src="./assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/client/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	<script>
 		$('.js-pscroll').each(function(){
 			$(this).css('position','relative');
