@@ -7,7 +7,7 @@
                 <div class="logo-header" data-background-color="dark">
                     <a href="index.php?page=index" class="logo">
                         <img
-                            src="assets/img/logo.png"
+                            src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/admin/img/logo.png"
                             alt="navbar brand"
                             class="navbar-brand"
                             height="20" />

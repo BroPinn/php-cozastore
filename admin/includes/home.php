@@ -188,7 +188,7 @@
                       <div class="item-list">
                         <div class="avatar">
                           <img
-                            src="assets/img/jm_denis.jpg"
+                            src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/admin/img/jm_denis.jpg"
                             alt="..."
                             class="avatar-img rounded-circle"
                           />
@@ -225,7 +225,7 @@
                       <div class="item-list">
                         <div class="avatar">
                           <img
-                            src="assets/img/talha.jpg"
+                            src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/admin/img/talha.jpg"
                             alt="..."
                             class="avatar-img rounded-circle"
                           />
@@ -244,7 +244,7 @@
                       <div class="item-list">
                         <div class="avatar">
                           <img
-                            src="assets/img/chadengle.jpg"
+                            src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/admin/img/chadengle.jpg"
                             alt="..."
                             class="avatar-img rounded-circle"
                           />

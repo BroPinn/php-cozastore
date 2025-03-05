@@ -14,7 +14,7 @@ if (isset($_SESSION['username'])) {
       <div class="logo-header" data-background-color="dark">
         <a href="index.html" class="logo">
           <img
-            src="assets/img/kaiadmin/logo_light.svg"
+            src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/admin/img/kaiadmin/logo_light.svg"
             alt="navbar brand"
             class="navbar-brand"
             height="20" />
@@ -102,7 +102,7 @@ if (isset($_SESSION['username'])) {
                     <a href="#">
                       <div class="notif-img">
                         <img
-                          src="assets/img/jm_denis.jpg"
+                          src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/admin/img/jm_denis.jpg"
                           alt="Img Profile" />
                       </div>
                       <div class="notif-content">
@@ -114,7 +114,7 @@ if (isset($_SESSION['username'])) {
                     <a href="#">
                       <div class="notif-img">
                         <img
-                          src="assets/img/chadengle.jpg"
+                          src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/admin/img/chadengle.jpg"
                           alt="Img Profile" />
                       </div>
                       <div class="notif-content">
@@ -126,7 +126,7 @@ if (isset($_SESSION['username'])) {
                     <a href="#">
                       <div class="notif-img">
                         <img
-                          src="assets/img/mlane.jpg"
+                          src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/admin/img/mlane.jpg"
                           alt="Img Profile" />
                       </div>
                       <div class="notif-content">
@@ -140,7 +140,7 @@ if (isset($_SESSION['username'])) {
                     <a href="#">
                       <div class="notif-img">
                         <img
-                          src="assets/img/talha.jpg"
+                          src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/admin/img/talha.jpg"
                           alt="Img Profile" />
                       </div>
                       <div class="notif-content">
@@ -204,7 +204,7 @@ if (isset($_SESSION['username'])) {
                     <a href="#">
                       <div class="notif-img">
                         <img
-                          src="assets/img/profile2.jpg"
+                          src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/admin/img/profile2.jpg"
                           alt="Img Profile" />
                       </div>
                       <div class="notif-content">
@@ -309,7 +309,7 @@ if (isset($_SESSION['username'])) {
           <li class="nav-item topbar-user dropdown hidden-caret">
             <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="#" aria-expanded="false">
               <div class="avatar-sm">
-                <img src="assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle" />
+                <img src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/admin/img/profile.jpg" alt="..." class="avatar-img rounded-circle" />
               </div>
               <span class="profile-username">
                 <span class="op-7">Hi,</span>
@@ -321,7 +321,7 @@ if (isset($_SESSION['username'])) {
                 <li>
                   <div class="user-box">
                     <div class="avatar-lg">
-                      <img src="assets/img/profile.jpg" alt="image profile" class="avatar-img rounded" />
+                      <img src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/admin/img/profile.jpg" alt="image profile" class="avatar-img rounded" />
                     </div>
                     <div class="u-text">
                       <h4><?php echo htmlspecialchars($adminData['username']); ?></h4>

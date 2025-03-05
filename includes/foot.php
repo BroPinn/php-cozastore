@@ -19,8 +19,9 @@
 	<script src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/client/vendor/moment/moment.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/client/vendor/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
-	<script src="./assets/vendor/slick/slick.min.js"></script>
-	<script src="./assets/js/slick-custom.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/client/vendor/slick/slick.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/client/js/slick-custom.js"></script>
+	
 <!--===============================================================================================-->
 	<script src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/client/vendor/parallax100/parallax100.js"></script>
 	<script>
@@ -167,7 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 <!--===============================================================================================-->
-	<script src="./assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/client/js/main.js"></script>
+
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 </body>
