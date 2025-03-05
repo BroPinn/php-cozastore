@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 function dd($value) 
 { 
     echo "<pre>"; 

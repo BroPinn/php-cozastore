@@ -1,3 +1,8 @@
+<?php
+require_once './service/cart_functions.php';
+$cartCount = getCartItemCount();
+?>
+
 <header class="header-v4">
 	<!-- Header desktop -->
 	<div class="container-menu-desktop">
@@ -71,7 +76,7 @@
 						<i class="zmdi zmdi-search"></i>
 					</div>
 
-					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="0">
+					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="<?= $cartCount ?>">
 						<i class="zmdi zmdi-shopping-cart"></i>
 					</div>
 
@@ -96,7 +101,7 @@
 				<i class="zmdi zmdi-search"></i>
 			</div>
 
-			<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" id="shoptxt" data-notify="0">
+			<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" id="shoptxt" data-notify="<?= $cartCount ?>">
 				<i class="zmdi zmdi-shopping-cart"></i>
 			</div>
 

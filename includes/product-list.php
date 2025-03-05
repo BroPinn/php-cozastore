@@ -8,13 +8,16 @@
                             alt="<?= htmlspecialchars($product['productName']) ?>"
                             class="img-fluid">
 
-                        <button class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1 add-to-cart"
-                            data-product-id="<?= htmlspecialchars($product['productID']) ?>"
-                            data-product-name="<?= htmlspecialchars($product['productName']) ?>"
-                            data-product-price="<?= $product['price'] ?>"
-                            data-product-image="<?= htmlspecialchars($product['image_path']) ?>">
-                            Add To Cart
-                        </button>
+                        <form method="POST" action="controllers/add_to_cart.php" target="cartFrame">
+                            <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['productID']) ?>">
+                            <input type="hidden" name="product_name" value="<?= htmlspecialchars($product['productName']) ?>">
+                            <input type="hidden" name="price" value="<?= $product['price'] ?>">
+                            <input type="hidden" name="image" value="<?= htmlspecialchars($product['image_path']) ?>">
+                            <button type="submit" name="add_to_cart" 
+                                class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+                                Add To Cart
+                            </button>
+                        </form>
                     </div>
                     <div class="block2-txt flex-w flex-t p-t-14">
                         <div class="block2-txt-child1 flex-col-l ">
