@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../service/cart_functions.php';
+require_once __DIR__ . './service/cart_functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
     $productID = $_POST['product_id'] ?? '';
