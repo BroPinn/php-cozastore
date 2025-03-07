@@ -15,12 +15,10 @@ class ProductModel {
 
     public function getProducts() {
         try {
-            global $pdo;
-        
-        // If $pdo is not set, establish database connection
-        if (!isset($pdo)) {
             $pdo = connectToDatabase();
-        }
+            if (!$pdo) {
+                throw new Exception("Database connection failed");
+            }
             
             $stmt = $pdo->query("CALL GetAllProducts()");
             return $stmt->fetchAll(PDO::FETCH_ASSOC);

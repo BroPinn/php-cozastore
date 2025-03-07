@@ -2,10 +2,11 @@
 require_once './models/CategoryModel.php';
 require_once './models/ProductModel.php';
 
+$categoryModel = new CategoryModel();
 $productModel = new ProductModel();
 
-$categories = getCategories();
-$products = $productModel->getProducts(); // Fetch products
+$categories = $categoryModel->getCategories();
+$products = $productModel->getProducts();
 
 // Debug: Log categories if empty
 if (empty($categories)) {

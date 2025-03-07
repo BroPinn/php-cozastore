@@ -14,17 +14,15 @@ class SliderModel {
 
     public function getSliders() {
         try {
-            global $pdo;
-        
-            // If $pdo is not set, establish database connection
-            if (!isset($pdo)) {
-                $pdo = connectToDatabase();
+            $pdo = connectToDatabase();
+            if (!$pdo) {
+                throw new Exception("Database connection failed");
             }
             
             $stmt = $pdo->query("CALL GetActiveSliders()");
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            error_log("Product Fetch Error: " . $e->getMessage());
+            error_log("Slider Fetch Error: " . $e->getMessage());
             return [];
         } catch (Exception $e) {
             error_log("General Error: " . $e->getMessage());

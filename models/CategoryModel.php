@@ -1,69 +1,45 @@
-
 <?php
-function getCategories() {
-    try {
-        global $pdo;
-        
-        // If $pdo is not set, establish database connection
-        if (!isset($pdo)) {
-            $pdo = connectToDatabase();
-        }
-        
-        // Prefer stored procedure if available
-        $stmt = $pdo->query("CALL GetCategories()");
-        $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        
-        return $categories;
-    } catch (PDOException $e) {
-        // Fallback to direct SQL query
+class CategoryModel {
+    private $category_id;
+    private $category_name;
+    private $category_status;
+
+    public function __construct() {
+        // Initialize any necessary properties
+    }
+
+    public function getCategories() {
         try {
-            $stmt = $pdo->query('SELECT * FROM tbl_category');
+            $pdo = connectToDatabase();
+            if (!$pdo) {
+                throw new Exception("Database connection failed");
+            }
+            
+            $stmt = $pdo->query("CALL GetActiveCategories()");
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $fallbackError) {
-            error_log("Category fetch error: " . $fallbackError->getMessage());
+        } catch (PDOException $e) {
+            error_log("Category Fetch Error: " . $e->getMessage());
+            return [];
+        } catch (Exception $e) {
+            error_log("General Error: " . $e->getMessage());
             return [];
         }
     }
-}
 
+    public function getCategoryById($category_id) {
+        try {
+            $pdo = connectToDatabase();
+            if (!$pdo) {
+                throw new Exception("Database connection failed");
+            }
 
-function addCategory($name, $description) {
-    global $pdo;
-    $slug = strtolower(str_replace(' ', '-', $name)); // Generate slug
-
-    try {
-        $stmt = $pdo->prepare("CALL AddCategory(?, ?, ?)");
-        $stmt->execute([$name, $slug, $description]);
-        echo "Category added successfully!";
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+            $stmt = $pdo->prepare("CALL GetCategoryById(?)");
+            $stmt->execute([$category_id]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Category Fetch Error: " . $e->getMessage());
+            return null;
+        }
     }
 }
-
-function updateCategory($id, $name, $description) {
-    global $pdo;
-    $slug = strtolower(str_replace(' ', '-', $name)); // Generate slug
-
-    try {
-        $stmt = $pdo->prepare("CALL UpdateCategory(?, ?, ?, ?)");
-        $stmt->execute([$id, $name, $slug, $description]);
-        echo "Category updated successfully!";
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
-    }
-}
-
-function deleteCategory($id) {
-    global $pdo;
-
-    try {
-        $stmt = $pdo->prepare("CALL DeleteCategory(?)");
-        $stmt->execute([$id]);
-        echo "Category deleted successfully!";
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
-    }
-}
-
-?>
 

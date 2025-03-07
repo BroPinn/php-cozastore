@@ -9,15 +9,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = trim($_POST['password']);
 
     if ($pdo) {
-        // Use prepared statements to prevent SQL injection
-        $stmt = $pdo->prepare("CALL AuthenticateAdmin(:username, :password, @result)");
+        // Direct password comparison
+        $stmt = $pdo->prepare("SELECT * FROM tbl_admin WHERE username = :username AND password = :password");
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':password', $password);
         $stmt->execute();
-        $result = $pdo->query("SELECT @result AS result")->fetch(PDO::FETCH_ASSOC);
-        $authResult = $result['result'];
-
-        if ($authResult == 1) {
+        
+        if ($stmt->rowCount() > 0) {
             $_SESSION['username'] = $username;
             header("Location: ../index.php?page=index");
             exit();
@@ -35,14 +33,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/client/images/icons/favicon.png">
+
     <title>Admin Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <section class="bg-gray-50 dark:bg-gray-900">
+<section class="bg-gray-50 dark:bg-gray-900">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-            <a href="/m3/cozastore-master/admin/index.php" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-                <img class="w-8 h-8 mr-2" src="../assets/img/logoproduct.svg" alt="logo">
+            <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+                <img class="w-8 h-8 mr-2" src="https://cdn.jsdelivr.net/gh/BroPinn/cdn-file@main/admin/img/logoproduct.svg" alt="logo">
                 OneStore
             </a>
             <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
