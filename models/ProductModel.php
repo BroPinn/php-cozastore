@@ -8,25 +8,15 @@ class ProductModel {
     private $image_path;
     private $updated_at;
     private $created_at;
-<<<<<<< HEAD
-
-    public function __construct() {
-        // Initialize any necessary properties
-=======
     private $db;
 
     public function __construct() {
         $this->db = new Database();
->>>>>>> ad0678e (Re Structure)
     }
 
     public function getProducts() {
         try {
-<<<<<<< HEAD
-            $pdo = connectToDatabase();
-=======
             $pdo = $this->db->getConnection();
->>>>>>> ad0678e (Re Structure)
             if (!$pdo) {
                 throw new Exception("Database connection failed");
             }
@@ -44,11 +34,7 @@ class ProductModel {
 
     public function getProductById($productID) {
         try {
-<<<<<<< HEAD
-            $pdo = connectToDatabase();
-=======
             $pdo = $this->db->getConnection();
->>>>>>> ad0678e (Re Structure)
             if (!$pdo) {
                 throw new Exception("Database connection failed");
             }
@@ -64,11 +50,7 @@ class ProductModel {
 
     public function createProduct($catID, $productName, $price, $description, $image_path) {
         try {
-<<<<<<< HEAD
-            $pdo = connectToDatabase();
-=======
             $pdo = $this->db->getConnection();
->>>>>>> ad0678e (Re Structure)
             if (!$pdo) {
                 throw new Exception("Database connection failed");
             }
@@ -89,11 +71,7 @@ class ProductModel {
 
     public function updateProduct($productID, $catName, $productName, $price, $description, $image_path) {
         try {
-<<<<<<< HEAD
-            $pdo = connectToDatabase();
-=======
             $pdo = $this->db->getConnection();
->>>>>>> ad0678e (Re Structure)
             if (!$pdo) {
                 throw new Exception("Database connection failed");
             }
@@ -115,11 +93,7 @@ class ProductModel {
 
     public function deleteProduct($productID) {
         try {
-<<<<<<< HEAD
-            $pdo = connectToDatabase();
-=======
             $pdo = $this->db->getConnection();
->>>>>>> ad0678e (Re Structure)
             if (!$pdo) {
                 throw new Exception("Database connection failed");
             }

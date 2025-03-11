@@ -8,26 +8,17 @@ class SliderModel {
     private $slider_link;
     private $slider_status;
 
-<<<<<<< HEAD
-    public function __construct() {
-        // Initialize any necessary properties
-=======
     
 
     private $db;
 
     public function __construct() {
         $this->db = new Database();
->>>>>>> ad0678e (Re Structure)
     }
 
     public function getSliders() {
         try {
-<<<<<<< HEAD
-            $pdo = connectToDatabase();
-=======
             $pdo = $this->db->getConnection();
->>>>>>> ad0678e (Re Structure)
             if (!$pdo) {
                 throw new Exception("Database connection failed");
             }
@@ -45,11 +36,7 @@ class SliderModel {
 
     public function getSliderById($slider_id) {
         try {
-<<<<<<< HEAD
-            $pdo = connectToDatabase();
-=======
             $pdo = $this->db->getConnection();
->>>>>>> ad0678e (Re Structure)
             if (!$pdo) {
                 throw new Exception("Database connection failed");
             }
@@ -65,11 +52,7 @@ class SliderModel {
 
     public function createSlider($slider_title, $slider_subtitle, $slider_image, $slider_link, $slider_status) {
         try {
-<<<<<<< HEAD
-            $pdo = connectToDatabase();
-=======
             $pdo = $this->db->getConnection();
->>>>>>> ad0678e (Re Structure)
             if (!$pdo) {
                 throw new Exception("Database connection failed");
             }   
@@ -90,11 +73,7 @@ class SliderModel {
 
     public function updateSlider($slider_id, $slider_title, $slider_subtitle, $slider_image, $slider_link, $slider_status) {
         try {
-<<<<<<< HEAD
-            $pdo = connectToDatabase();
-=======
             $pdo = $this->db->getConnection();
->>>>>>> ad0678e (Re Structure)
             if (!$pdo) {
                 throw new Exception("Database connection failed");
             }
@@ -116,11 +95,7 @@ class SliderModel {
 
     public function deleteSlider($slider_id) {
         try {
-<<<<<<< HEAD
-            $pdo = connectToDatabase();
-=======
             $pdo = $this->db->getConnection();
->>>>>>> ad0678e (Re Structure)
             if (!$pdo) {
                 throw new Exception("Database connection failed");
             }
