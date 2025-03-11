@@ -3,14 +3,25 @@ class CategoryModel {
     private $category_id;
     private $category_name;
     private $category_status;
+<<<<<<< HEAD
 
     public function __construct() {
         // Initialize any necessary properties
+=======
+    private $db;
+
+    public function __construct() {
+        $this->db = new Database();
+>>>>>>> ad0678e (Re Structure)
     }
 
     public function getCategories() {
         try {
+<<<<<<< HEAD
             $pdo = connectToDatabase();
+=======
+            $pdo = $this->db->getConnection();
+>>>>>>> ad0678e (Re Structure)
             if (!$pdo) {
                 throw new Exception("Database connection failed");
             }
@@ -28,7 +39,11 @@ class CategoryModel {
 
     public function getCategoryById($category_id) {
         try {
+<<<<<<< HEAD
             $pdo = connectToDatabase();
+=======
+            $pdo = $this->db->getConnection();
+>>>>>>> ad0678e (Re Structure)
             if (!$pdo) {
                 throw new Exception("Database connection failed");
             }
