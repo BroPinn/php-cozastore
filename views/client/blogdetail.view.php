@@ -1,7 +1,7 @@
-<?php include './includes/head.php'; ?>
+<?php include CLIENT_VIEWS_DIR . './includes/head.php'; ?>
 
 
-<?php include './includes/nav.php'; ?>
+<?php include CLIENT_VIEWS_DIR . './includes/nav.php'; ?>
 <div class="container">
     <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
         <a href="index.php" class="stext-109 cl8 hov-cl1 trans-04">

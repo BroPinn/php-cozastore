@@ -1,5 +1,5 @@
-<?php include './includes/head.php'; ?>
-    <?php include './includes/nav.php'; ?>
+<?php include CLIENT_VIEWS_DIR . './includes/head.php'; ?>
+    <?php include CLIENT_VIEWS_DIR . './includes/nav.php'; ?>
     <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('./assets/images/bg-01.jpg');">
 		<h2 class="ltext-105 cl0 txt-center">
 			Contact
