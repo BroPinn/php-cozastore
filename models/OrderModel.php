@@ -233,3 +233,4 @@ class OrderModel {
     public function setPaymentMethod($value) { $this->paymentMethod = $value; }
     public function setTrackingNumber($value) { $this->trackingNumber = $value; }
 }
+

@@ -19,20 +19,25 @@ class Database {
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                 PDO::ATTR_EMULATE_PREPARES => false
             ]);
-
-            // Set the collation
             $this->pdo->exec("SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'");
         } catch (PDOException $e) {
             error_log("Database Connection Error: " . $e->getMessage());
-            $this->pdo = null; // Ensures null is returned if the connection fails
+            $this->pdo = null;
         }
     }
 
     public function getConnection() {
+        if ($this->pdo === null) {
+            $this->connect();
+            if ($this->pdo === null) {
+                throw new Exception("Database connection failed");
+            }
+        }
         return $this->pdo;
     }
 }
 
-// Usage example
+// Global database instance
 $db = new Database();
 $pdo = $db->getConnection();
+

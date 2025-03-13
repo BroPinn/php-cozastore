@@ -184,3 +184,4 @@ class CustomerModel {
     public function setAddress($value) { $this->address = $value; }
     public function setPhone($value) { $this->phone = $value; }
 }
+
